@@ -43,3 +43,8 @@ def main():
     return 1
 ```
 
+The way to write and call functions now changes.
+Any effect should be yielded. All subroutines that
+use effects should be generators. Function calling
+for these subroutines would change to `yield from`.
+
