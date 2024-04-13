@@ -22,7 +22,7 @@ class Increment(Effect):
 # Create a handler for this
 from pyfect import Continuation
 
-def increment_handler[T](effect: Square, continuation: Continuation[T]) -> T:
+def increment_handler[T](effect: Increment, continuation: Continuation[T]) -> T:
     # you can pass values to the continuation
     return continuation(effect.value + 1)
 
