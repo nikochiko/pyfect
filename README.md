@@ -30,7 +30,7 @@ def increment_handler[T](effect: Square, continuation: Continuation[T]) -> T:
 from pyfect import Runner
 
 runner = Runner()
-runner.register(Fork, fork_handler)
+runner.register(Increment, increment_handler)
 
 # Write an entrypoint function and call runner.run with it
 def main():
@@ -41,10 +41,12 @@ def main():
 
     # values can be returned normally
     return 1
+
+runner.run(main)
 ```
 
-The way to write and call functions now changes.
-Any effect should be yielded. All subroutines that
-use effects should be generators. Function calling
-for these subroutines would change to `yield from`.
+The way to write and call functions changes:
+- Effects should be yielded from the entrypoint fn
+- All subroutines that use effects should be generators
+- Instead of simply calling these subroutines, these must be used with `yield from`
 
